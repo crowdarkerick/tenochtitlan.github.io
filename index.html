@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Turística Mexica</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4fdf9;
+      color: #333;
+    }
+    header, section {
+      padding: 20px;
+      margin: 10px auto;
+      max-width: 1200px;
+    }
+    h1, h2, h3 {
+      color: #00695c;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    nav button {
+      background-color: #00695c;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    nav button:hover {
+      background-color: #004d40;
+    }
+    form {
+      background-color: #e0f2f1;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+    }
+    form input {
+      margin: 8px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 400px;
+      display: block;
+    }
+    form input[type="submit"] {
+      background-color: #00695c;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    form input[type="submit"]:hover {
+      background-color: #004d40;
+    }
+    #indicadores span {
+      width: 12px;
+      height: 12px;
+      background: #ccc;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #indicadores span.activo {
+      background: #fff;
+    }
+    .fade {
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav button {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      iframe {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Ruta Turística Mexica</h1>
+    <nav>
+      <button onclick="document.getElementById('transporte').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-bus"></i> Transporte</button>
+      <button onclick="document.getElementById('souvenir').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-gift"></i> Souvenir</button>
+      <button onclick="document.getElementById('hospedaje').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-hotel"></i> Hospedaje</button>
+      <button onclick="document.getElementById('atractivos').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-map-marked-alt"></i> Atractivos</button>
+      <button onclick="document.getElementById('guia').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-user"></i> Guía</button>
+      <button onclick="document.getElementById('registro').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-edit"></i> Registro</button>
+      <button onclick="document.getElementById('restaurante').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-utensils"></i> Restaurante</button>
+      <button onclick="document.getElementById('mapa').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-map"></i> Mapa</button>
+      <button onclick="document.getElementById('itinerario').scrollIntoView({behavior: 'smooth'})"><i class="fas fa-calendar-day"></i> Itinerario</button>
+    </nav>
+  </header>
+  <section id="registro">
+    <h2>Formulario de Registro</h2>
+    <form id="formRegistro">
+      <input type="text" id="nombre" placeholder="Nombre completo" required>
+      <input type="email" id="correo" placeholder="Correo electrónico" required>
+      <input type="tel" id="telefono" placeholder="Teléfono">
+      <input type="submit" value="Registrar">
+    </form>
+  </section>
+  <script>
+    document.getElementById('formRegistro').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const submitBtn = this.querySelector('input[type="submit"]');
+      submitBtn.disabled = true;
+      const nombre = document.getElementById('nombre').value.trim();
+      const correo = document.getElementById('correo').value.trim();
+      const telefono = document.getElementById('telefono').value.trim();
+      const correoRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!nombre || !correo) {
+        alert('Por favor completa los campos obligatorios.');
+        submitBtn.disabled = false;
+        return;
+      }
+      if (!correoRegex.test(correo)) {
+        alert('Por favor ingresa un correo electrónico válido.');
+        submitBtn.disabled = false;
+        return;
+      }
+      if (telefono && isNaN(telefono)) {
+        alert('El teléfono debe contener solo números.');
+        submitBtn.disabled = false;
+        return;
+      }
+      alert('¡Registro exitoso!');
+      this.reset();
+      submitBtn.disabled = false;
+    });
+  </script>
+
+    <h1>RUTA TURÍSTICA MEXICA</h1>
+    <p><strong>Duración de la ruta:</strong> 2 noches 3 días</p>
+
+    <div class="section">
+        <h2 id="transporte">Transporte</h2>
+        <p>Características de la Urvan (camioneta):</p>
+        <ul>
+            <li>Estándar</li>
+            <li>Dirección hidráulica</li>
+            <li>Para 15 personas</li>
+            <li>4 puertas</li>
+            <li>Aire acondicionado</li>
+            <li>4 cilindros</li>
+            <li>Vestiduras de velour</li>
+            <li>Autoestéreo, CD y Aux</li>
+            <li>Vidrios delanteros eléctricos</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="hospedaje">Hospedaje</h2>
+        <p>Ubicado en el paseo de Reforma (Hotel Sevilla Palace)</p>
+        <p>Servicios del Hotel:</p>
+        <ul>
+            <li>Alberca</li>
+            <li>Restaurante</li>
+            <li>Servicio a la habitación</li>
+            <li>Estacionamiento incluido</li>
+            <li>Bar</li>
+            <li>Servicio de limpieza</li>
+            <li>3 habitaciones cuádruples</li>
+            <li>1 habitación doble</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="guia">Guía local</h2>
+        <p>Empresa de Tripadvisor (VIATOR).</p>
+        <ul>
+            <li>Por los tres días</li>
+            <li>Idiomas: inglés y español</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="restaurante">Restaurante – Desayuno (La Bonita)</h2>
+        <p>Comidas completas por tres tiempos.</p>
+    </div>
+
+    <div class="section">
+        <h2 id="souvenir">Suvenir</h2>
+        <p>Se les regalará una totebag con estampado de Tenochtitlan, Tláloc y Huitzilopochtli. </p>
+    </div>
+
+    <div class="section">
+        <h2 id="atractivos">Atractivos turísticos a visitar</h2>
+        <ul>
+            <li><strong>Plaza Juan José Baz (La Aguilita):</strong> Legendario lugar donde se fundó Tenochtitlan.</li>
+            <li><strong>Zona Arqueológica Mixcoac:</strong> Pirámide dedicada al dios Mixcóatl.</li>
+            <li><strong>Plaza de Tlatelolco:</strong> Plaza de las Tres Culturas.</li>
+            <li><strong>Museo Nacional de Antropología:</strong> Piedra del Sol, Coatlicue, y más.</li>
+            <li><strong>Templo Mayor:</strong> Adoratorios a Huitzilopochtli y Tláloc.</li>
+            <li><strong>Mercado de Artesanías de La Ciudadela:</strong> Artesanías de todo el país.</li>
+            <li><strong>Mercado de San Juan:</strong> Comida exótica y antojitos mexicanos.</li>
+            <li><strong>Fuente de Nezahualcóyotl:</strong> Altar náhuatl en el bosque de Chapultepec.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 id="itinerario">Itinerario</h2>
+        <h3>Día 1 – Viernes</h3>
+        <ul>
+            <li>8:00 am – Cita en Rojo Gómez</li>
+            <li>8:30 am – Llegada al hotel Sevilla Palace</li>
+            <li>9:35 am – Bienvenida por parte del guía y comida en La Bonita</li>
+            <li>11:20 am – Recorrido por plaza de La Aguilita</li>
+            <li>1:00 pm – Tiempo libre para comer</li>
+            <li>3:50 pm – Zona arqueológica de Mixcoac</li>
+            <li>5:50 pm – Cena en La Bonita</li>
+            <li>7:05 pm – Regreso al hotel</li>
+        </ul>
+        <h3>Día 2 – Sábado</h3>
+        <ul>
+            <li>8:00 am – Desayuno en La Bonita</li>
+            <li>9:43 am – Recorrido por plaza de Tlatelolco</li>
+            <li>11:30 am – Tiempo libre para comer</li>
+            <li>2:30 pm – Visita al Museo Nacional de Antropología</li>
+            <li>4:30 pm – Tiempo libre o descanso</li>
+            <li>6:15 pm – Cena en La Bonita</li>
+            <li>7:35 pm – Regreso al hotel</li>
+        </ul>
+        <h3>Día 3 – Domingo (Fin del tour)</h3>
+        <ul>
+            <li>8:00 am – Desayuno en La Bonita</li>
+            <li>9:45 am – Visita al Museo del Templo Mayor</li>
+            <li>12:00 pm – Mercado de San Juan</li>
+            <li>1:40 pm – Mercado de Artesanías de La Ciudadela</li>
+            <li>3:00 pm – Fuente de Nezahualcóyotl</li>
+            <li>4:20 pm – Comida en La Bonita</li>
+            <li>5:35 pm – Recoger pertenencias en el hotel</li>
+            <li>7:30 pm – Regreso al punto de inicio</li>
+        </ul>
+    </div>
+
+
+    <div id="mapa" class="section">
+        <h2>Mapa</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.005576681562!2d-99.13320828569874!3d19.44249228688779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1fefce551589f%3A0x872bbc8356c9a1b3!2sTemplo%20Mayor!5e0!3m2!1ses-419!2smx!4v1618320203643!5m2!1ses-419!2smx" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    </body>
+</html>
